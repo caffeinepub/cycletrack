@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "iOS menstrual cycle tracking app targeting reproductive health awareness. Tracks cycles, fertility windows, and safe/unsafe sex periods with notifications. Includes sex life tracking, safe/unsafe sex period guidance, educational resources, data privacy measures, and user customization options.",
+  "architectural_notes": [
+    "iOS-only application (Swift/SwiftUI recommended)",
+    "Sensitive health data must be stored locally with encryption (HealthKit integration optional)",
+    "Target audience: individuals seeking reproductive health tracking and informed sexual health decisions"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-build-a-dashboard-home-screen-showing-the-current-cycle-day-a-visual-calendar-highlighting-menstruation-days-fertile-window-ovulation-day-and-safe-unsafe-periods-using-color-coded-indicators",
+      "title": "Build a dashboard home screen showing the current cycle day, a visual calendar highlighting menstruation days, fertile window, ovulation day, and safe/unsafe periods using color-coded indicators.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-cycle-logging-screen-where-users-can-log-period-start-date-period-end-date-and-any-symptoms-or-notes-display-a-history-of-past-logged-cycles",
+      "title": "Build a cycle logging screen where users can log period start date, period end date, and any symptoms or notes. Display a history of past logged cycles.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-an-in-app-notifications-reminders-panel-that-displays-upcoming-period-start-predictions-fertility-window-alerts-and-ovulation-day-reminders-based-on-the-user-s-cycle-data-and-reminder-preferences",
+      "title": "Build an in-app notifications/reminders panel that displays upcoming period start predictions, fertility window alerts, and ovulation day reminders based on the user's cycle data and reminder preferences.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-an-educational-resources-section-with-informational-content-covering-menstrual-cycle-phases-fertility-basics-safe-sex-guidance-and-reproductive-health-tips-content-should-be-organized-by-topic-and-easy-to-browse",
+      "title": "Build an educational resources section with informational content covering menstrual cycle phases, fertility basics, safe sex guidance, and reproductive health tips. Content should be organized by topic and easy to browse.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-settings-customization-screen-where-users-can-configure-their-average-cycle-length-luteal-phase-length-and-notification-preferences-which-reminders-to-receive-and-how-many-days-in-advance",
+      "title": "Build a settings/customization screen where users can configure their average cycle length, luteal phase length, and notification preferences (which reminders to receive and how many days in advance).",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-warm-soft-and-feminine-visual-theme-throughout-the-app-using-a-rose-blush-and-warm-cream-color-palette-rounded-ui-components-gentle-typography-and-a-clean-layout-inspired-by-modern-wellness-apps-enforce-this-theme-consistently-across-all-screens",
+      "title": "Apply a warm, soft, and feminine visual theme throughout the app using a rose/blush and warm cream color palette, rounded UI components, gentle typography, and a clean layout inspired by modern wellness apps. Enforce this theme consistently across all screens.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-a-clear-privacy-notice-within-the-app-stating-that-all-cycle-data-is-stored-on-chain-within-the-user-s-own-canister-on-the-internet-computer-is-not-shared-with-third-parties-and-is-only-accessible-by-the-authenticated-user",
+      "title": "Display a clear privacy notice within the app stating that all cycle data is stored on-chain within the user's own canister on the Internet Computer, is not shared with third parties, and is only accessible by the authenticated user.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-static-appconfig-json-file-in-the-frontend-public-directory-that-exposes-key-app-configuration-values-including-app-name-version-theme-color-palette-tokens-default-cycle-settings-cycle-length-luteal-phase-length-and-any-environment-level-metadata-e-g-canister-references-feature-flags-the-file-must-be-publicly-accessible-at-runtime-via-a-static-url-path-appconfig-json",
+      "title": "Create a static `appConfig.json` file in the `frontend/public` directory that exposes key app configuration values, including app name, version, theme color palette tokens, default cycle settings (cycle length, luteal phase length), and any environment-level metadata (e.g., canister references, feature flags). The file must be publicly accessible at runtime via a static URL path (`/appConfig.json`).",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-intimacy-page-accessible-from-the-main-navigation-the-page-must-include-1-a-safe-unsafe-sex-period-indicator-showing-today-s-status-with-color-coded-visual-green-safe-red-unsafe-yellow-caution-along-with-a-brief-explanation-of-why-that-period-is-safe-or-not-2-a-sexual-activity-log-section-where-users-can-add-view-edit-and-delete-entries-date-protection-used-toggle-optional-notes-apply-the-existing-rose-blush-cream-warm-theme-consistently",
+      "title": "Add a new 'Intimacy' page accessible from the main navigation. The page must include: (1) A safe/unsafe sex period indicator showing today's status with color-coded visual (green = safe, red = unsafe, yellow = caution), along with a brief explanation of why that period is safe or not. (2) A sexual activity log section where users can add, view, edit, and delete entries (date, protection used toggle, optional notes). Apply the existing rose/blush/cream warm theme consistently.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-react-query-hooks-in-usequeries-ts-to-wire-the-new-intimacy-page-to-the-backend-hooks-for-fetching-all-sexual-activity-entries-creating-a-new-entry-updating-an-entry-deleting-an-entry-and-fetching-the-safe-sex-status-for-today-s-date",
+      "title": "Add React Query hooks in useQueries.ts to wire the new Intimacy page to the backend: hooks for fetching all sexual activity entries, creating a new entry, updating an entry, deleting an entry, and fetching the safe-sex status for today's date.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Menstrual cycle tracking (log period start/end, cycle length)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Fertility window calculation and display",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Safe and unsafe sex period notifications/reminders",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Educational resources section on reproductive health",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "User customization options (cycle length, reminders, preferences)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Data privacy measures (local storage, encryption, no third-party sharing)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "User flow diagram and wireframe for main interface",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Implement a backend data model and API for menstrual cycle logging. Store period start date, end date, and cycle length per user. Support creating, reading, updating, and deleting cycle entries.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Implement backend logic to calculate and return fertility windows and predicted safe/unsafe sex periods based on the logged cycle data, using standard cycle-phase algorithms (menstrual, follicular, ovulation, luteal phases).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Implement a backend system for user customization preferences, including preferred cycle length, luteal phase length, and reminder preferences (which notifications to receive and how many days in advance).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Sex life tracking: log sexual activity and display safe vs. unsafe sex period guidance based on cycle data",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Add a backend data model and API to log sexual activity entries. Each entry should store: date, whether protection was used (boolean), and optional notes. Support create, read, update, and delete operations. Associate entries with the authenticated user.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Extend the backend to return a safe/unsafe sex period status for any given date, based on the user's cycle data and fertility phase calculations. Return one of: 'safe', 'unsafe', or 'caution' based on whether the date falls in the menstrual/luteal phase (safe), fertile window/ovulation (unsafe), or transition days (caution).",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "CycleTrack",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,84 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-28T09:52:09.421Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-12",
+        "summary": "Add a backend data model and API to log sexual activity entries. Each entry should store: date, whether protection was used (boolean), and optional notes. Support create, read, update, and delete operations. Associate entries with the authenticated user.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Extend the backend to return a safe/unsafe sex period status for any given date, based on the user's cycle data and fertility phase calculations. Return one of: 'safe', 'unsafe', or 'caution' based on whether the date falls in the menstrual/luteal phase (safe), fertile window/ovulation (unsafe), or transition days (caution).",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-14",
+        "summary": "Add a new 'Intimacy' page accessible from the main navigation. The page must include: (1) A safe/unsafe sex period indicator showing today's status with color-coded visual (green = safe, red = unsafe, yellow = caution), along with a brief explanation of why that period is safe or not. (2) A sexual activity log section where users can add, view, edit, and delete entries (date, protection used toggle, optional notes). Apply the existing rose/blush/cream warm theme consistently.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Intimacy.tsx",
+          "frontend/src/components/SexActivityEntryForm.tsx",
+          "frontend/src/components/SexActivityCard.tsx",
+          "frontend/src/components/SafeSexStatusIndicator.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/Layout.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Intimacy.tsx",
+          "frontend/src/components/SexActivityEntryForm.tsx",
+          "frontend/src/components/SexActivityCard.tsx",
+          "frontend/src/components/SafeSexStatusIndicator.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/Layout.tsx"
+        ]
+      },
+      {
+        "id": "REQ-15",
+        "summary": "Add React Query hooks in useQueries.ts to wire the new Intimacy page to the backend: hooks for fetching all sexual activity entries, creating a new entry, updating an entry, deleting an entry, and fetching the safe-sex status for today's date.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useQueries.ts"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/components/SafeSexStatusIndicator.tsx",
+    "frontend/src/components/SexActivityCard.tsx",
+    "frontend/src/components/SexActivityEntryForm.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/Intimacy.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

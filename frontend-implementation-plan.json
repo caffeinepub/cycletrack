@@ -1,0 +1,70 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add Sex Life Tracking & Safe/Unsafe Sex Period Guidance",
+  "requirements": [
+    {
+      "id": "REQ-14",
+      "summary": "Add a new 'Intimacy' page with safe/unsafe sex period indicator and sexual activity log",
+      "acceptanceCriteria": [
+        "A new 'Intimacy' route and page component exists and is reachable from the app navigation.",
+        "The page displays today's safe/unsafe sex status with a color-coded indicator (green/yellow/red) and an explanatory message based on cycle phase.",
+        "A form allows users to log a new sexual activity entry with date, protection used toggle, and optional notes.",
+        "Past sexual activity entries are listed in reverse chronological order with edit and delete options.",
+        "Each log entry shows date, protection status (icon/badge), and notes if present.",
+        "The page requires authentication; unauthenticated users are prompted to log in.",
+        "The page follows the existing rose/blush/cream warm feminine visual theme."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Intimacy.tsx",
+          "operation": "create",
+          "description": "Create the main Intimacy page component that displays: (1) a safe/unsafe sex period indicator for today with color-coded visual (green=safe, red=unsafe, yellow=caution) and explanatory text based on cycle phase; (2) a form to add new sexual activity entries with date picker, protection toggle, and optional notes field; (3) a list of past sexual activity entries in reverse chronological order showing date, protection status icon/badge, and notes with edit and delete actions. Require authentication and apply the existing rose/blush/cream warm theme using Tailwind classes and CSS custom properties from appConfig.json. Use the useGetSafeSexStatus, useGetSexActivityEntries, useCreateSexActivityEntry, useUpdateSexActivityEntry, and useDeleteSexActivityEntry hooks from useQueries.ts."
+        },
+        {
+          "path": "frontend/src/components/SexActivityEntryForm.tsx",
+          "operation": "create",
+          "description": "Create a reusable form component for creating or editing a sexual activity entry with date input, protection used toggle/checkbox, and optional notes textarea. Include validation (date required, notes optional) and async submit handling. Accept optional initialData prop for edit mode. Follow the existing CycleEntryForm pattern and apply the rose/blush/cream theme."
+        },
+        {
+          "path": "frontend/src/components/SexActivityCard.tsx",
+          "operation": "create",
+          "description": "Create a card component to display a single sexual activity entry showing the date, a protection status badge or icon (e.g., shield icon with checkmark for protected, empty shield for unprotected), and optional notes. Include inline edit (opens SexActivityEntryForm in a dialog or inline) and delete (with confirmation AlertDialog) actions. Use shadcn/ui components (Card, Badge, Button) and apply the warm theme colors."
+        },
+        {
+          "path": "frontend/src/components/SafeSexStatusIndicator.tsx",
+          "operation": "create",
+          "description": "Create a visual indicator component that displays the safe/unsafe/caution status for a given date with color-coded styling (green background/border for safe, red for unsafe, yellow for caution). Show a large icon or badge, the status label (Safe Period / Unsafe Period / Caution Period), and an explanatory message based on the cycle phase (e.g., 'You are in your menstrual phase, considered a safe period' or 'You are in your fertile window, considered an unsafe period'). Accept safePeriodStatus and optional explanatory text as props. Use Tailwind and OKLCH color variables for consistency."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add a new route for '/intimacy' that renders the Intimacy page component. Import the Intimacy page and register it in the TanStack Router configuration alongside existing routes (landing, dashboard, cycle-log, reminders, education, settings)."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Add a navigation link for 'Intimacy' to both the desktop navigation menu and the mobile navigation drawer. Place it logically in the navigation order (e.g., after 'Reminders' and before 'Education'). Use consistent styling with existing navigation links and apply active state highlighting when on the Intimacy route."
+        }
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "summary": "Add React Query hooks to wire the Intimacy page to the backend for sexual activity entries and safe-sex status",
+      "acceptanceCriteria": [
+        "A useGetSexActivityEntries hook fetches the authenticated user's logged entries.",
+        "A useCreateSexActivityEntry mutation hook creates a new entry and invalidates the entries query.",
+        "An useUpdateSexActivityEntry mutation hook updates an existing entry.",
+        "A useDeleteSexActivityEntry mutation hook deletes an entry and invalidates the entries query.",
+        "A useGetSafeSexStatus hook fetches today's safe/unsafe/caution status from the backend."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add five new React Query hooks: (1) useGetSexActivityEntries: a query hook that calls actor.getSexualActivityEntries() with queryKey ['sexActivityEntries'], enabled when actor is available; (2) useCreateSexActivityEntry: a mutation hook that calls actor.addSexualActivityEntry(date, protected, notes) and invalidates ['sexActivityEntries'] on success; (3) useUpdateSexActivityEntry: a mutation hook that calls actor.updateSexualActivityEntry(index, date, protected, notes) and invalidates ['sexActivityEntries'] on success; (4) useDeleteSexActivityEntry: a mutation hook that calls actor.deleteSexualActivityEntry(index) and invalidates ['sexActivityEntries'] on success; (5) useGetSafeSexStatus: a query hook that accepts a date parameter and calls actor.getSafePeriodStatus(date) with queryKey ['safeSexStatus', date]. Follow the existing pattern used for cycle entries hooks and return proper loading/error states."
+        }
+      ]
+    }
+  ]
+}

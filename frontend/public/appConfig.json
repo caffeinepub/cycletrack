@@ -1,0 +1,68 @@
+{
+  "appName": "CycleTrack",
+  "version": "1.0.0",
+  "description": "A private, secure menstrual cycle tracking app built on the Internet Computer.",
+  "defaultSettings": {
+    "preferredCycleLength": 28,
+    "lutealPhaseLength": 14,
+    "reminderDaysBefore": 3
+  },
+  "theme": {
+    "fontFamily": {
+      "sans": "DM Sans",
+      "serif": "Playfair Display"
+    },
+    "borderRadius": "1rem",
+    "colors": {
+      "primary": "oklch(0.62 0.18 10)",
+      "primaryForeground": "oklch(0.99 0.006 55)",
+      "background": "oklch(0.975 0.012 60)",
+      "foreground": "oklch(0.22 0.025 30)",
+      "card": "oklch(0.99 0.006 55)",
+      "accent": "oklch(0.92 0.05 15)",
+      "muted": "oklch(0.93 0.018 55)",
+      "mutedForeground": "oklch(0.52 0.04 35)",
+      "border": "oklch(0.88 0.03 50)",
+      "ring": "oklch(0.62 0.18 10)",
+      "rose": {
+        "50": "oklch(0.97 0.02 15)",
+        "100": "oklch(0.94 0.04 15)",
+        "200": "oklch(0.88 0.08 15)",
+        "300": "oklch(0.80 0.13 15)",
+        "400": "oklch(0.72 0.18 10)",
+        "500": "oklch(0.62 0.22 10)",
+        "600": "oklch(0.52 0.20 10)",
+        "700": "oklch(0.42 0.16 10)"
+      },
+      "blush": {
+        "50": "oklch(0.97 0.015 20)",
+        "100": "oklch(0.94 0.03 20)",
+        "200": "oklch(0.90 0.06 20)",
+        "300": "oklch(0.84 0.10 20)",
+        "400": "oklch(0.76 0.14 20)"
+      },
+      "cream": {
+        "50": "oklch(0.99 0.006 55)",
+        "100": "oklch(0.975 0.012 60)",
+        "200": "oklch(0.95 0.022 58)",
+        "300": "oklch(0.92 0.032 56)"
+      },
+      "phases": {
+        "menstrual": "oklch(0.65 0.22 15)",
+        "follicular": "oklch(0.78 0.12 80)",
+        "ovulation": "oklch(0.72 0.18 145)",
+        "luteal": "oklch(0.72 0.14 55)"
+      }
+    }
+  },
+  "featureFlags": {
+    "fertilityTracking": true,
+    "reminders": true,
+    "cycleHistory": true,
+    "privacyMode": true
+  },
+  "environment": {
+    "platform": "Internet Computer",
+    "network": "ic"
+  }
+}

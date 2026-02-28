@@ -1,0 +1,105 @@
+{
+  "kind": "build_request",
+  "title": "Add Sex Life Tracking & Safe/Unsafe Sex Period Guidance",
+  "projectName": "CycleTrack",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-12",
+      "text": "Add a backend data model and API to log sexual activity entries. Each entry should store: date, whether protection was used (boolean), and optional notes. Support create, read, update, and delete operations. Associate entries with the authenticated user.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Need to add sex life tracking and when to have safe sex and when to not options"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A new stable data structure exists in the backend actor for sexual activity entries (date, protectionUsed, optional notes, userId).",
+        "Backend exposes create, read, update, and delete methods for sexual activity entries.",
+        "Only the authenticated caller can access their own sexual activity entries.",
+        "Sexual activity entries are persisted across canister upgrades."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Extend the backend to return a safe/unsafe sex period status for any given date, based on the user's cycle data and fertility phase calculations. Return one of: 'safe', 'unsafe', or 'caution' based on whether the date falls in the menstrual/luteal phase (safe), fertile window/ovulation (unsafe), or transition days (caution).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "when to have safe sex and when to not options"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A backend function accepts a date and returns a safe-sex status ('safe', 'unsafe', or 'caution') based on the user's logged cycle data.",
+        "Ovulation day and fertile window days are classified as 'unsafe'.",
+        "Menstrual and late luteal phase days are classified as 'safe'.",
+        "Transition days bordering fertile windows are classified as 'caution'.",
+        "The function returns a meaningful response even when cycle data is limited."
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Add a new 'Intimacy' page accessible from the main navigation. The page must include: (1) A safe/unsafe sex period indicator showing today's status with color-coded visual (green = safe, red = unsafe, yellow = caution), along with a brief explanation of why that period is safe or not. (2) A sexual activity log section where users can add, view, edit, and delete entries (date, protection used toggle, optional notes). Apply the existing rose/blush/cream warm theme consistently.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Need to add sex life tracking and when to have safe sex and when to not options"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A new 'Intimacy' route and page component exists and is reachable from the app navigation.",
+        "The page displays today's safe/unsafe sex status with a color-coded indicator (green/yellow/red) and an explanatory message based on cycle phase.",
+        "A form allows users to log a new sexual activity entry with date, protection used toggle, and optional notes.",
+        "Past sexual activity entries are listed in reverse chronological order with edit and delete options.",
+        "Each log entry shows date, protection status (icon/badge), and notes if present.",
+        "The page requires authentication; unauthenticated users are prompted to log in.",
+        "The page follows the existing rose/blush/cream warm feminine visual theme."
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Add React Query hooks in useQueries.ts to wire the new Intimacy page to the backend: hooks for fetching all sexual activity entries, creating a new entry, updating an entry, deleting an entry, and fetching the safe-sex status for today's date.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Need to add sex life tracking and when to have safe sex and when to not options"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A useGetSexActivityEntries hook fetches the authenticated user's logged entries.",
+        "A useCreateSexActivityEntry mutation hook creates a new entry and invalidates the entries query.",
+        "An useUpdateSexActivityEntry mutation hook updates an existing entry.",
+        "A useDeleteSexActivityEntry mutation hook deletes an entry and invalidates the entries query.",
+        "A useGetSafeSexStatus hook fetches today's safe/unsafe/caution status from the backend."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui.",
+    "All backend logic must remain in the single actor in backend/main.mo.",
+    "Sexual activity data must be scoped strictly to the authenticated caller — no cross-user access.",
+    "Maintain the existing rose/blush/cream warm feminine visual theme across all new UI."
+  ],
+  "nonGoals": [
+    "No contraception tracking, prescription, or medical advice features.",
+    "No integration with external health APIs or third-party services.",
+    "No real-time notifications for sexual activity reminders.",
+    "No changes to existing cycle logging, reminders, education, or settings screens."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

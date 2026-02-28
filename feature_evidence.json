@@ -1,0 +1,48 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-a-new-intimacy-page-accessible-from-the-main-navigation-the-page-must-include-1-a-safe-unsafe-sex-period-indicator-showing-today-s-status-with-color-coded-visual-green-safe-red-unsafe-yellow-caution-along-with-a-brief-explanation-of-why-that-period-is-safe-or-not-2-a-sexual-activity-log-section-where-users-can-add-view-edit-and-delete-entries-date-protection-used-toggle-optional-notes-apply-the-existing-rose-blush-cream-warm-theme-consistently",
+      "featureTitle": "Add a new 'Intimacy' page accessible from the main navigation. The page must include: (1) A safe/unsafe sex period indicator showing today's status with color-coded visual (green = safe, red = unsafe, yellow = caution), along with a brief explanation of why that period is safe or not. (2) A sexual activity log section where users can add, view, edit, and delete entries (date, protection used toggle, optional notes). Apply the existing rose/blush/cream warm theme consistently.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/components/SafeSexStatusIndicator.tsx",
+        "frontend/src/components/SexActivityCard.tsx",
+        "frontend/src/components/SexActivityEntryForm.tsx",
+        "frontend/src/pages/Intimacy.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-react-query-hooks-in-usequeries-ts-to-wire-the-new-intimacy-page-to-the-backend-hooks-for-fetching-all-sexual-activity-entries-creating-a-new-entry-updating-an-entry-deleting-an-entry-and-fetching-the-safe-sex-status-for-today-s-date",
+      "featureTitle": "Add React Query hooks in useQueries.ts to wire the new Intimacy page to the backend: hooks for fetching all sexual activity entries, creating a new entry, updating an entry, deleting an entry, and fetching the safe-sex status for today's date.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-15"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
